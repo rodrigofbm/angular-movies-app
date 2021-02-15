@@ -1,7 +1,7 @@
 <mat-toolbar class="app-title">Cadastrar Filme</mat-toolbar>
 <div class="main-div">
   <mat-card class="center width50" >
-      <form autocomplete="off" novalidate [formGroup]="cadastroForm"(ngSubmit)="save()" (ngReset)="resetForm()">
+      <form autocomplete="off" novalidate [formGroup]="cadastroForm"(ngSubmit)="submit()" (ngReset)="resetForm()">
         <mat-card-content>
           <dio-input-text ngDefaultControl title="Título" formControlName="title" [formGroup]="cadastroForm"></dio-input-text>
           <dio-input-text ngDefaultControl title="Link Foto" formControlName="urlPhoto" [formGroup]="cadastroForm"></dio-input-text>
