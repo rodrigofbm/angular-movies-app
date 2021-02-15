@@ -1,0 +1,28 @@
+<mat-toolbar class="app-title">Cadastrar Filme</mat-toolbar>
+<div class="main-div">
+  <mat-card class="center width50" >
+      <form autocomplete="off" novalidate [formGroup]="cadastroForm"(ngSubmit)="save()" (ngReset)="resetForm()">
+        <mat-card-content>
+          <dio-input-text ngDefaultControl title="Título" formControlName="title" [formGroup]="cadastroForm"></dio-input-text>
+          <dio-input-text ngDefaultControl title="Link Foto" formControlName="urlPhoto" [formGroup]="cadastroForm"></dio-input-text>
+          <dio-input-date ngDefaultControl title="Data de Lançamento" formControlName="releaseDate" [formGroup]="cadastroForm"></dio-input-date>
+          <dio-input-textarea ngDefaultControl title="Descrição" formControlName="description" [formGroup]="cadastroForm"></dio-input-textarea>
+          <dio-input-number 
+            ngDefaultControl 
+            title="Nota IMDb" 
+            formControlName="rate" 
+            [formGroup]="cadastroForm"
+            [min]="0"
+            [max]="10"
+            [step]="0.5"
+          ></dio-input-number>
+          <dio-input-text ngDefaultControl title="Link IMDb" formControlName="urlIMDb" [formGroup]="cadastroForm"></dio-input-text>
+          <dio-input-select ngDefaultControl title="Gênero" formControlName="genre" [selects]="selects" [formGroup]="cadastroForm"></dio-input-select>
+        </mat-card-content>
+        <mat-card-actions>
+          <button type="submit" color="accent" mat-raised-button>Salvar</button>
+          <button type="reset" color="warn" mat-raised-button>Cancelar</button>
+        </mat-card-actions>
+      </form>
+  </mat-card>
+</div>
