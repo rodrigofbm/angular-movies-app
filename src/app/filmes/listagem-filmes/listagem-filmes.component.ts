@@ -8,18 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listagem-filmes.component.scss']
 })
 export class ListagemFilmesComponent implements OnInit {
-  movies: Filme[];
+  readonly qtdItems = 4;
+  pageNum = 0;
+  movies: Filme[] = [];
 
   constructor(private filmesService: FilmesService) { }
 
   ngOnInit() {
-    this.filmesService.listAll().subscribe({
+    this.listItems();
+  }
+
+  open() {}
+
+  onScroll() {
+    this.listItems();
+  }
+
+  listItems() {
+    this.pageNum++;
+    this.filmesService.listAll(this.pageNum, this.qtdItems).subscribe({
       next: (m: Filme[]) => {
-        this.movies = m;
+        this.movies.push(...m);
       },
       error: console.log
     });
   }
-
-  open() {}
 }

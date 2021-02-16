@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Filme } from '../shared/models/filme';
@@ -16,7 +16,13 @@ export class FilmesService {
     return this.http.post<Filme>(URL, filme);
   }
 
-  listAll(): Observable<Filme[]> {
-    return this.http.get<Filme[]>(URL);
+  listAll(pageNum: number, qtdItems: number): Observable<Filme[]> {
+    let httParams = new HttpParams();
+    httParams = httParams.set('_page', pageNum.toString());
+    httParams = httParams.set('_limit', qtdItems.toString());
+
+    return this.http.get<Filme[]>(URL, {
+      params: httParams
+    });
   }
 }
