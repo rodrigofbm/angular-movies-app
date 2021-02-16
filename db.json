@@ -8,7 +8,7 @@
       "description": "A police officer joins a secret organization that polices and monitors extraterrestrial interactions on Earth.",
       "rate": 7.3,
       "urlIMDb": "https://www.imdb.com/title/tt0119654/",
-      "genre": "Ação"
+      "genre": "acao"
     },
     {
       "id": 2,
@@ -18,7 +18,7 @@
       "description": "Agent J is sent to find Agent K and restore his memory after the re-appearance of a case from K's past.",
       "rate": 6.2,
       "urlIMDb": "https://www.imdb.com/title/tt0120912",
-      "genre": "Ação"
+      "genre": "acao"
     },
     {
       "id": 3,
@@ -28,7 +28,7 @@
       "description": "Agent J travels in time to M.I.B.'s early days in 1969 to stop an alien from assassinating his friend Agent K and changing history.",
       "rate": 6.8,
       "urlIMDb": "https://www.imdb.com/title/tt1409024/",
-      "genre": "Ação"
+      "genre": "acao"
     },
     {
       "id": 4,
@@ -38,7 +38,7 @@
       "description": "The Men in Black have always protected the Earth from the scum of the universe. In this new adventure, they tackle their biggest threat to date: a mole in the Men in Black organization.",
       "rate": 5.6,
       "urlIMDb": "https://www.imdb.com/title/tt2283336/",
-      "genre": "Ação"
+      "genre": "acao"
     },
     {
       "id": 5,
@@ -48,7 +48,7 @@
       "description": "In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker.",
       "rate": 8.7,
       "urlIMDb": "https://www.imdb.com/title/tt7286456/",
-      "genre": "Drama"
+      "genre": "drama"
     },
     {
       "id": 6,
@@ -58,7 +58,7 @@
       "description": "After the devastating events of Vingadores: Guerra Infinita (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
       "rate": 8.5,
       "urlIMDb": "https://www.imdb.com/title/tt4154796/",
-      "genre": "Aventura"
+      "genre": "aventura"
     },
     {
       "id": 7,
@@ -68,7 +68,7 @@
       "description": "Carol Danvers becomes one of the universe's most powerful heroes when Earth is caught in the middle of a galactic war between two alien races.",
       "rate": 6.9,
       "urlIMDb": "https://www.imdb.com/title/tt4154664/",
-      "genre": "Ação"
+      "genre": "acao"
     },
     {
       "id": 8,
@@ -78,7 +78,7 @@
       "description": "A newly fostered young boy in search of his mother instead finds unexpected super powers and soon gains a powerful enemy.",
       "rate": 7.1,
       "urlIMDb": "https://www.imdb.com/title/tt0448115/",
-      "genre": "Comédia"
+      "genre": "comedia"
     },
     {
       "id": 9,
@@ -88,7 +88,7 @@
       "description": "John Wick is on the run after killing a member of the international assassin's guild, and with a $14 million price tag on his head, he is the target of hit men and women everywhere.",
       "rate": 7.5,
       "urlIMDb": "https://www.imdb.com/title/tt6146586/",
-      "genre": "Ação"
+      "genre": "acao"
     },
     {
       "title": "Mistério no Mediterrâneo",
@@ -97,7 +97,7 @@
       "description": "A New York cop and his wife go on a European vacation to reinvigorate the spark in their marriage, but end up getting framed and on the run for the death of an elderly billionaire.",
       "rate": 6,
       "urlIMDb": "https://www.imdb.com/title/tt1618434/",
-      "genre": "Comédia",
+      "genre": "comedia",
       "id": 10
     },
     {
@@ -107,7 +107,7 @@
       "description": "In Theaters Now\nAfter Palpatine mysteriously returns, the Resistance faces the First Order once more in the final chapter of the Skywalker saga.",
       "rate": 6.9,
       "urlIMDb": "https://www.imdb.com/title/tt2527338/?ref_=vi_md_ti",
-      "genre": "Aventura",
+      "genre": "aventura",
       "id": 11
     },
     {
