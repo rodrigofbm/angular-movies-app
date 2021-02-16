@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-import { FieldsModule } from './../shared/components/fields/fields.module';
 import { CadastroFilmesComponent } from './cadastro-filmes/cadastro-filmes.component';
-import { MaterialModule } from '../shared/material/material.module';
 import { ListagemFilmesComponent } from './listagem-filmes/listagem-filmes.component';
+import { MaterialModule } from '../shared/material/material.module';
+import { FieldsModule } from './../shared/components/fields/fields.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ListagemFilmesComponent } from './listagem-filmes/listagem-filmes.compo
   imports: [
     CommonModule,
     MaterialModule,
+    InfiniteScrollModule,
     ReactiveFormsModule,
     FormsModule,
     FieldsModule,
