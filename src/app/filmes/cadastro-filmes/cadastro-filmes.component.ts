@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Filme } from './../../shared/models/filme';
 import { FilmesService } from './../../core/filmes.service';
@@ -16,6 +16,8 @@ import { AlertComponent } from './../../shared/components/alert/alert.component'
 export class CadastroFilmesComponent implements OnInit {
 
   cadastroForm: FormGroup;
+  movieId: number;
+  movie: Filme;
   selects = [
     {value: 'acao', name: 'Ação'},
     {value: 'aventura', name: 'Aventura'},
@@ -27,19 +29,13 @@ export class CadastroFilmesComponent implements OnInit {
   constructor(
       public dialog: MatDialog,
       private fb: FormBuilder,
-      private filmeService: FilmesService,
-      private router: Router) { }
+      private router: Router,
+      private activatedRoute: ActivatedRoute,
+      private filmeService: FilmesService) { }
 
   ngOnInit() {
-    this.cadastroForm = this.fb.group({
-      title: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(256)]],
-      urlPhoto: ['', [Validators.minLength(10)]],
-      releaseDate: ['', [Validators.required]],
-      description: [''],
-      rate: ['', [Validators.required, Validators.min(0), Validators.max(10)]],
-      urlIMDb: ['', [Validators.minLength(10)]],
-      genre: ['', [Validators.required]]
-    });
+    this.movieId = this.activatedRoute.snapshot.params['id'];
+    this.initializeForm();
   }
 
   openDialog(): void {
@@ -82,5 +78,44 @@ export class CadastroFilmesComponent implements OnInit {
 
   resetForm (): void {
     this.cadastroForm.reset();
+  }
+
+  private initializeForm() {
+    if(this.movieId) {
+      this.filmeService.listById(this.movieId).subscribe({
+        next: (filme: Filme) => {
+          if(filme) {
+            this.movie = filme;
+          }
+          
+          this.createForm();
+        },
+        error: console.log
+      })
+    }else {
+      this.movie = {
+        id: null,
+        title: '',
+        description: '',
+        genre: '',
+        rate: 0,
+        releaseDate: null,
+        urlIMDb: '',
+        urlPhoto: ''
+      }
+      this.createForm();
+    }
+  }
+
+  private createForm() {
+    this.cadastroForm = this.fb.group({
+      title: [this.movie.title, [Validators.required, Validators.minLength(2), Validators.maxLength(256)]],
+      urlPhoto: [this.movie.urlPhoto, [Validators.minLength(10)]],
+      releaseDate: [this.movie.releaseDate, [Validators.required]],
+      description: [this.movie.description],
+      rate: [this.movie.rate, [Validators.required, Validators.min(0), Validators.max(10)]],
+      urlIMDb: [this.movie.urlIMDb, [Validators.minLength(10)]],
+      genre: [this.movie.genre, [Validators.required]]
+    });
   }
 }

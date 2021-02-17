@@ -17,6 +17,7 @@ export class VisualizarFilmeComponent implements OnInit {
   readonly noPic =
     'https://www.termoparts.com.br/wp-content/uploads/2017/10/no-image.jpg';
   movie: Filme;
+  movieId: number;
   params: ConfigParams = {
     field: {
       type: 'id',
@@ -32,12 +33,17 @@ export class VisualizarFilmeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.movieId = this.activatedRoute.snapshot.params['id'];
     this.filmesService
-      .listById(this.activatedRoute.snapshot.params['id'])
+      .listById(this.movieId)
       .subscribe({
         next: (movie: Filme) => (this.movie = movie),
         error: console.log,
       });
+  }
+
+  editar() {
+    this.router.navigateByUrl(`/filmes/cadastro/${this.movieId}`);
   }
 
   delete(): void {
@@ -54,7 +60,7 @@ export class VisualizarFilmeComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.filmesService
-          .delete(this.activatedRoute.snapshot.params['id'])
+          .delete(this.movieId)
           .subscribe({
             next: () => this.router.navigateByUrl('/filmes'),
             error: () => {
