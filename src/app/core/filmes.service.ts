@@ -24,4 +24,12 @@ export class FilmesService {
       params: this.configParamsService.configParams(configParams)
     });
   }
+
+  listById(movieId: number): Observable<Filme> {
+    return this.http.get<Filme>(`${URL}/${movieId}`);
+  }
+
+  delete(movieId: number): Observable<void> {
+    return this.http.delete<void>(`${URL}/${movieId}`);
+  }
 }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
@@ -32,7 +33,7 @@ export class ListagemFilmesComponent implements OnInit {
     {value: 'terror', name: 'Terror'},
   ];
   
-  constructor(private filmesService: FilmesService, private fb: FormBuilder) { }
+  constructor(private filmesService: FilmesService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.listItems();
@@ -56,7 +57,9 @@ export class ListagemFilmesComponent implements OnInit {
     });
   }
 
-  open() {}
+  open(movieId: number) {
+    this.router.navigateByUrl('/filmes/' + movieId);
+  }
 
   onScroll() {
     this.listItems();
