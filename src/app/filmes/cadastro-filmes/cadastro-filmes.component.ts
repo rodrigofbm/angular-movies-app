@@ -59,7 +59,8 @@ export class CadastroFilmesComponent implements OnInit {
     if (this.cadastroForm.invalid) {
       return ;
     } else {
-      this.filmeService.save(this.cadastroForm.getRawValue() as Filme)
+      if(!this.movie.id) {
+        this.filmeService.save(this.cadastroForm.getRawValue() as Filme)
         .subscribe({
           next: () => this.openDialog(),
           error: () => {
@@ -73,6 +74,25 @@ export class CadastroFilmesComponent implements OnInit {
             this.dialog.open(AlertComponent, config);
           }
         });
+      }else {
+        const movie = this.cadastroForm.getRawValue() as Filme;
+        movie.id = this.movieId;
+
+        this.filmeService.update(movie)
+        .subscribe({
+          next: () => this.router.navigateByUrl('/filmes'),
+          error: () => {
+            const config = {
+              data: {
+                title: 'Ops! Algo deu errado',
+                description: 'Não conseguimos salvar o seu registro. Tente novamente mais tarde.'
+              } as Alert
+            };
+
+            this.dialog.open(AlertComponent, config);
+          }
+        })
+      }
     }
   }
 
@@ -84,10 +104,8 @@ export class CadastroFilmesComponent implements OnInit {
     if(this.movieId) {
       this.filmeService.listById(this.movieId).subscribe({
         next: (filme: Filme) => {
-          if(filme) {
-            this.movie = filme;
-          }
-          
+          if(filme)this.movie = filme;
+
           this.createForm();
         },
         error: console.log
