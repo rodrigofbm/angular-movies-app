@@ -1,3 +1,4 @@
+import { ConfigParams } from './../../shared/models/config-params';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Filme } from './../../shared/models/filme';
 import { FilmesService } from './../../core/filmes.service';
@@ -9,10 +10,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listagem-filmes.component.scss']
 })
 export class ListagemFilmesComponent implements OnInit {
-  readonly qtdItems = 4;
-  pageNum = 0;
-  textFiltro: string;
-  generoFiltro: string;
+  configParams: ConfigParams = {
+    field: {
+      type: 'genre',
+      value: ''
+    },
+    limit: 4,
+    page: 0,
+    search: '',
+  }
   movies: Filme[] = [];
   filtroFormGroup: FormGroup;
   selects = [
@@ -33,11 +39,14 @@ export class ListagemFilmesComponent implements OnInit {
     });
 
     this.filtroFormGroup.get('text').valueChanges.subscribe((val: string) => {
-      this.textFiltro = val;
+      this.configParams.search = val;
       this.resetList();
     });
     this.filtroFormGroup.get('genre').valueChanges.subscribe((val: string) => {
-      this.generoFiltro = val;
+      this.configParams.field = {
+        type: 'genre',
+        value: val
+      };
       this.resetList();
     });
   }
@@ -49,8 +58,8 @@ export class ListagemFilmesComponent implements OnInit {
   }
 
   listItems() {
-    this.pageNum++;
-    this.filmesService.listAll(this.pageNum, this.qtdItems, this.textFiltro, this.generoFiltro).subscribe({
+    this.configParams.page++;
+    this.filmesService.listAll(this.configParams).subscribe({
       next: (m: Filme[]) => {
         this.movies.push(...m);
       },
@@ -59,7 +68,7 @@ export class ListagemFilmesComponent implements OnInit {
   }
 
   private resetList() {
-    this.pageNum = 0;
+    this.configParams.page = 0;
     this.movies = [];
     this.listItems();
   }

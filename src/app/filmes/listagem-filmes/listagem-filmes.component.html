@@ -3,7 +3,8 @@
   <form autocomplete="off" novalidate [formGroup]="filtroFormGroup">
     <div class="float-left width50">
       <div class="padding10">
-        <dio-input-text 
+        <dio-input-text
+          ngDefaultControl
           title="Pesquisar..." 
           formControlName="text" 
           [formGroup]="filtroFormGroup"></dio-input-text>
@@ -11,7 +12,8 @@
     </div>
     <div class="float-left width50">
       <div class="padding10">
-        <dio-input-select 
+        <dio-input-select
+          ngDefaultControl
           formControlName="genre"
           title="Gênero"
           [selects]="selects" 
