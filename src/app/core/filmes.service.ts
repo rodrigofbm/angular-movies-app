@@ -1,8 +1,9 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 import { ConfigParamsService } from './config-params.service';
 import { ConfigParams } from './../shared/models/config-params';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Filme } from '../shared/models/filme';
 
 const URL = 'http://localhost:3000/filmes';

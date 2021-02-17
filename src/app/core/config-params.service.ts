@@ -1,7 +1,7 @@
-import { ConfigParams } from './../shared/models/config-params';
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import { ConfigParams } from './../shared/models/config-params';
 @Injectable({
   providedIn: 'root'
 })

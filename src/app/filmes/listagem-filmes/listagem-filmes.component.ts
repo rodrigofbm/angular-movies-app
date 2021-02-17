@@ -1,8 +1,10 @@
-import { ConfigParams } from './../../shared/models/config-params';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
+
+import { ConfigParams } from './../../shared/models/config-params';
 import { Filme } from './../../shared/models/filme';
 import { FilmesService } from './../../core/filmes.service';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'dio-listagem-filmes',
@@ -10,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listagem-filmes.component.scss']
 })
 export class ListagemFilmesComponent implements OnInit {
+  readonly noPic = 'https://www.termoparts.com.br/wp-content/uploads/2017/10/no-image.jpg';
   configParams: ConfigParams = {
     field: {
       type: 'genre',
@@ -38,7 +41,9 @@ export class ListagemFilmesComponent implements OnInit {
       genre: ['']
     });
 
-    this.filtroFormGroup.get('text').valueChanges.subscribe((val: string) => {
+    this.filtroFormGroup.get('text').valueChanges
+    .pipe(debounceTime(400))
+    .subscribe((val: string) => {
       this.configParams.search = val;
       this.resetList();
     });
